@@ -6,7 +6,7 @@ variable "bucket_name" {
   default = "datalake-desafio-algbretao-tf-prd"
 }
 
-# URI da IAM Role criada no AWS
+# URI da IAM Role criada no AWS.
 variable "iam_arn" {
   default = "arn:aws:iam::451237051222:role/AWSGlueServiceRole-admin"
 } 
