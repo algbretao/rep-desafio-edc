@@ -2,12 +2,8 @@ variable "regiao" {
   default = "us-east-1"
 }
 
-variable "ambiente" {
-  default = "prd"
-}
-
 variable "bucket_name" {
-  default = "datalake-desafio-algbretao-tf-${var.ambiente}"
+  default = "datalake-desafio-algbretao-tf-prd"
 }
 
 variable "iam_arn" {
