@@ -1,3 +1,4 @@
+# Cria um bucket no S3
 resource "aws_s3_bucket" "datalake" {
   bucket = "${var.bucket_name}"
   tags = {
@@ -6,6 +7,7 @@ resource "aws_s3_bucket" "datalake" {
   }
 }
 
+# Configurações de rules do bucket criado
 resource "aws_s3_bucket_server_side_encryption_configuration" "datalake-configuration" {
   bucket = aws_s3_bucket.datalake.id
 
@@ -17,11 +19,13 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "datalake-configur
   }
 }
 
+# Define as permissões de acesso do bucket 
 resource "aws_s3_bucket_acl" "datalake-acl" {
   bucket = aws_s3_bucket.datalake.id
   acl    = "private"
 }
 
+# Configura regras para bloquear o acesso anônimo ao conteúdo do bucket
 resource "aws_s3_bucket_public_access_block" "datalake_public_access_block" {
   bucket = aws_s3_bucket.datalake.id
   block_public_acls       = true
