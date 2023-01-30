@@ -4,9 +4,9 @@ resource "aws_glue_job" "glue_job_rais" {
   max_retries = "1"
   timeout = 2880
   command {
-    script_location = "s3://${var.bucket_names[1]}/scripts/glue_job_from_tf.py"
-    # spark_ui_url = "s3://${var.bucket_names[1]}/sparkHistoryLogs/"
-    # temp_dir = "s3://${var.bucket_names[1]}/glue-scripts/temporary"
+    script_location = "s3://${var.bucket_name}/scripts/glue_job_from_tf.py"
+    # spark_ui_url = "s3://${var.bucket_name}/sparkHistoryLogs/"
+    # temp_dir = "s3://${var.bucket_name}/glue-scripts/temporary"
     python_version = "3"
   }
   execution_property {
@@ -21,6 +21,6 @@ resource "aws_glue_crawler" "glue_crawler_rais" {
   role          = "${var.iam_arn}"
 
   s3_target {
-    path = "s3://${var.bucket_names[1]}/RAIS-2020/staging/"
+    path = "s3://${var.bucket_name}/RAIS-2020/staging/"
   }
 }

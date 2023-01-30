@@ -22,22 +22,10 @@ variable "glue_crawler_name" {
   default = "glue_crawler_rais"
 }
 
-variable "bucket_names" {
-  description = "Nome dos buckets"
-  type        = list(string)
-  default = [
-    "datalake-desafio-algbretao-tf-${var.ambientes[1]}",
-    "datalake-desafio-algbretao-tf-${var.ambientes[2]}",
-    "datalake-desafio-algbretao-tf-${var.ambientes[3]}",
-  ]
+variable "bucket_name" {
+  default = "datalake-desafio-algbretao-tf-${var.ambiente}"
 }
 
-variable "ambientes" {
-  description = "Ambientes"
-  type        = list(string)
-  default = [
-    "prd",
-    "hml",
-    "dev",
-  ]
+variable "ambiente" {
+  default = "prd"
 }
