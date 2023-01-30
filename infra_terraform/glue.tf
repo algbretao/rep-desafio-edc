@@ -4,9 +4,9 @@ resource "aws_glue_job" "glue_job_rais" {
   max_retries = "1"
   timeout = 2880
   command {
-    script_location = "s3://${var.bucket_name}-${var.ambiente}/scripts/glue_job_from_tf.py"
-    # spark_ui_url = "s3://${var.bucket_name}-${var.ambiente}/sparkHistoryLogs/"
-    # temp_dir = "s3://${var.bucket_name}-${var.ambiente}/glue-scripts/temporary"
+    script_location = "s3://${var.bucket_names[1]}/scripts/glue_job_from_tf.py"
+    # spark_ui_url = "s3://${var.bucket_names[1]}/sparkHistoryLogs/"
+    # temp_dir = "s3://${var.bucket_names[1]}/glue-scripts/temporary"
     python_version = "3"
   }
   execution_property {
@@ -21,29 +21,6 @@ resource "aws_glue_crawler" "glue_crawler_rais" {
   role          = "${var.iam_arn}"
 
   s3_target {
-    path = "s3://${var.bucket_name}-${var.ambiente}/desafio_zona_staging/result_glue_test_silver/"
+    path = "s3://${var.bucket_names[1]}/RAIS-2020/staging/"
   }
 }
-
-# resource "aws_iam_role" "glue_role_rais" {
-#   name = "test_role"
-
-#   # Terraform's "jsonencode" function converts a Terraform expression result to valid JSON syntax.
-#   assume_role_policy = jsonencode({
-#     Version = "2012-10-17"
-#     Statement = [
-#       {
-#         Action = "sts:AssumeRole"
-#         Effect = "Allow"
-#         Sid    = ""
-#         Principal = {
-#           Service = "ec2.amazonaws.com"
-#         }
-#       },
-#     ]
-#   })
-
-#   tags = {
-#     tag-key = "tag-value"
-#   }
-# }

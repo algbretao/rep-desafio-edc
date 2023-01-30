@@ -1,11 +1,3 @@
-variable "bucket_name" {
-  default = "datalake-desafio-algbretao-tf"
-}
-
-variable "ambiente" {
-  default = "prd"
-}
-
 variable "regiao" {
   default = "us-east-1"
 }
@@ -28,4 +20,28 @@ variable "database_name" {
 
 variable "glue_crawler_name" {
   default = "glue_crawler_rais"
+}
+
+variable "bucket_names" {
+  default = "${var.bucket_name}-${var.ambiente}"
+}
+
+variable "bucket_names" {
+  description = "Nome dos buckets"
+  type        = list(string)
+  default = [
+    "datalake-desafio-algbretao-tf-${var.ambientes[1]}",
+    "datalake-desafio-algbretao-tf-${var.ambientes[2]}",
+    "datalake-desafio-algbretao-tf-${var.ambientes[3]}",
+  ]
+}
+
+variable "ambientes" {
+  description = "Ambientes"
+  type        = list(string)
+  default = [
+    "prd",
+    "hml",
+    "dev",
+  ]
 }
