@@ -23,10 +23,6 @@ variable "glue_crawler_name" {
 }
 
 variable "bucket_names" {
-  default = "${var.bucket_name}-${var.ambiente}"
-}
-
-variable "bucket_names" {
   description = "Nome dos buckets"
   type        = list(string)
   default = [
