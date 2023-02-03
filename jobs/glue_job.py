@@ -121,7 +121,7 @@ rais
 .write.mode('overwrite')
 .partitionBy('ano', 'uf')
 .format('parquet')
-.save('s3://datalake-desafio-algbretao-tf-prd/RAIS-2020/staging/')
+.save('s3://datalake-desafio-algbretao-tf-prd/RAIS-2020/staging/rais')
 )
 
 job.commit()

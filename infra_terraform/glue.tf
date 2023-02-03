@@ -25,6 +25,6 @@ resource "aws_glue_crawler" "glue_crawler_rais" {
   s3_target {
     # Path onde o Crowler irá ler o dado já tratado no formato parquet.
     # Este path foi definido no glue job, para gravar os dados já tratados.
-    path = "s3://${var.bucket_name}/RAIS-2020/staging/"
+    path = "s3://${var.bucket_name}/RAIS-2020/staging/rais"
   }
 }
